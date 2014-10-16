@@ -49,7 +49,7 @@ public class PBKDF2 {
     }
 
     private void commandlineMode(final String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        final String hash = generateStorngPasswordHash(password);
+        final String hash = generateStrongPasswordHash(password);
         if (validatePassword(password, hash)) {
             System.out.println(hash);
         } else {
@@ -61,7 +61,7 @@ public class PBKDF2 {
         final Scanner in = new Scanner(System.in);
         System.out.println("Enter password that should be hashed:");
         final String password = in.nextLine().trim();
-        final String hashedPassword = generateStorngPasswordHash(password);
+        final String hashedPassword = generateStrongPasswordHash(password);
         System.out.println("Hash:");
         System.out.println(hashedPassword);
         System.out.println("is valid: " + validatePassword(password, hashedPassword));
@@ -75,7 +75,7 @@ public class PBKDF2 {
         System.out.println(help);
     }
 
-    private String generateStorngPasswordHash(final String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    private String generateStrongPasswordHash(final String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         final char[] chars = password.toCharArray();
         final byte[] salt = generateSalt();
 
